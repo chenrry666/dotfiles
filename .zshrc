@@ -20,6 +20,7 @@ export HISTFILE=~/.zhistory
 setopt extendedhistory
 setopt incappendhistory
 setopt histignoredups
+setopt histignorespace
 # }}}
 
 ##### completions {{{
@@ -120,10 +121,9 @@ zinit light romkatv/powerlevel10k
 
 zinit ice lucid wait='0'
 zinit light DarrinTisdale/zsh-aliases-exa
-
 DISABLE_LS_COLORS=true
-alias ls=exa
 
+alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
 zinit cdreplay -q
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
