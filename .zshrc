@@ -1,99 +1,129 @@
-
-
+# p10k {{{
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# }}}
+setopt interactivecomments 
+setopt autocd
+setopt extendedglob
+setopt globcomplete
+setopt completeinword
+setopt correct
 
+# history {{{
+export HISTSIZE=1000
+export SAVEHIST=1000
+export HISTFILE=~/.zhistory
+setopt extendedhistory
+setopt incappendhistory
+setopt histignoredups
+# }}}
 
-
-
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' expand prefix suffix
-zstyle ':completion:*' group-name '${LS_COLORS}'
+##### completions {{{
+# completion cache
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path .zcache
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+ 
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' menu select
+zstyle ':completion:*:*:default' force-list always
+zstyle ':completion:*' select-prompt '%SSelect:  lines: %L  matches: %M  [%p]'
+ 
+zstyle ':completion:*:match:*' original only
+zstyle ':completion::prefix-1:*' completer _complete
+zstyle ':completion:predict:*' completer _complete
+zstyle ':completion:incremental:*' completer _complete _correct
+zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
+ 
+zstyle ':completion:*' expand 'yes'
+zstyle ':completion:*' squeeze-shlashes 'yes'
+zstyle ':completion::complete:*' '\'
+ 
+#colorred completion menus
+eval $(dircolors -b)
+export ZLSCOLORS="${LS_COLORS}"
+zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-zstyle ':completion:*' list-suffixes true
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'l:|=* r:|=*' '' 'r:|[._-/]=** r:|=**'
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' original true
-zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*' use-compctl false
-zstyle :compinstall filename '/home/arch/.zshrc'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+ 
+#ignorecase
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+#correction
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+ 
+#kill 命令补全
+#compdef pkill=kill
+#compdef pkill=killall
+#zstyle ':completion:*:*:kill:*' menu yes select
+#zstyle ':completion:*:*:*:*:processes' force-list always
+#zstyle ':completion:*:processes' command 'ps -au$USER'
+ 
+#grouping
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
+zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
+zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
+zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
 
+##### }}}
+# emacs key-binding
+bindkey -e
+
+# sudo snippet {{{
+sudo-command-line() {
+[[ -z $BUFFER ]] && zle up-history
+[[ $BUFFER != sudo\ * ]] && BUFFER="sudo $BUFFER"
+zle end-of-line                 #光标移动到行末
+}
+zle -N sudo-command-line
+#use <Esc><Esc> to add sudo
+bindkey "\e\e" sudo-command-line
+# }}}
+
+zstyle :compinstall filename '/home/arch/.zshrc'
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd extendedglob notify
-bindkey -v
-# End of lines configured by zsh-newuser-install
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# zinit {{{
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-alias ls='ls --color=auto'
-alias l='ls -lah'
-function proxyctl {
-	if [ $1 = "" ] 
-	then
-		printf 'usage: \n\t proxyctl [up|restart|stop|status]\n'
-		return 127 
-	fi
-	if [ $1 = 'restart' ] 
-	then
-		sudo systemctl restart clash
-		return 0
-	fi
-	if [ $1 = 'up' ] 
-	then
-		sudo systemctl start clash
-		return 0
-	fi
-	if [ $1 = 'stop' ] 
-	then
-		sudo systemctl stop clash
-		return 0
-	fi
-	if [ $1 = 'status' ] 
-	then
-		sudo systemctl status clash
-		return 0
-	fi
-	printf 'error: unsupported: %s\n' $1
-	return 127
-}
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+# }}}
 
-function command_not_found_handler {
-    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-    printf 'zsh: command not found: %s\n' "$1"
-    local entries=(
-        ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
-    )
-    if (( ${#entries[@]} ))
-    then
-        printf "${bright}$1${reset} may be found in the following packages:\n"
-        local pkg
-        for entry in "${entries[@]}"
-        do
-            # (repo package version file)
-            local fields=(
-                ${(0)entry}
-            )
-            if [[ "$pkg" != "${fields[2]}" ]]
-            then
-                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-            fi
-            printf '    /%s\n' "${fields[4]}"
-            pkg="${fields[2]}"
-        done
-    fi
-    return 127
-}
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice lucid wait='0' atinit='zpcompinit'
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice lucid wait='0'
+zinit light zsh-users/zsh-completions
+
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
+
+zinit ice lucid wait='0'
+zinit light DarrinTisdale/zsh-aliases-exa
+
+DISABLE_LS_COLORS=true
+alias ls=exa
+
+zinit cdreplay -q
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
