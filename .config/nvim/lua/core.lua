@@ -3,6 +3,7 @@ local default_setting = {}
 default_setting['opt'] = {
     number = true,
     relativenumber = true,
+    ignorecase = true,
     undofile = false, -- use undo file
     swapfile = false, -- use swap file
     maxmempattern = 2000, -- max match pattern
