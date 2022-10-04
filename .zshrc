@@ -107,6 +107,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 # }}}
 
+# zsh packages {{{
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
@@ -123,6 +124,8 @@ zinit ice lucid wait='0'
 zinit light DarrinTisdale/zsh-aliases-exa
 DISABLE_LS_COLORS=true
 
+zinit light MichaelAquilina/zsh-you-should-use
+#}}}
 alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
 zinit cdreplay -q
 

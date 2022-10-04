@@ -9,6 +9,7 @@ default_setting['opt'] = {
     autochdir = true, -- auto change directory to current file
     lazyredraw = true, -- true will speed up in macro repeat
     ttyfast = true, -- true maybe as lazyredraw ? TODO
+    wrap = false,
     mouse = 'a',
     hidden = true, -- permit of change buffer when the buffer is not been written
     fileencodings = "utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1",
