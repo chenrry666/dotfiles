@@ -40,6 +40,7 @@ default_setting['opt'] = {
 for key, value in pairs(default_setting['opt']) do
     vim.o[key] = value
 end
+
 -- vim.opt.foldmethod     = 'expr'
 -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
 ---WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469

@@ -68,15 +68,12 @@ use({
     require'nvim-treesitter.configs'.setup {
       ensure_installed = {"lua"},
       sync_install = false,
-
       -- Automatically install missing parsers when entering buffer
       auto_install = false,
-
-      -- List of parsers to ignore installing (for "all")
       ignore_install = { "javascript", 'c', 'rust' },
-
-      -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
+      -- parser_install_dir = "/some/path/to/store/parsers", 
+      -- If you want to change install path, 
+      -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
       highlight = {
         enable = true,
         -- disable slow treesitter highlight for large files
@@ -87,13 +84,11 @@ use({
               return true
           end
         end,
-
         additional_vim_regex_highlighting = false,
       },
     }
   end
 })
-
 
 if packer_bootstrap then
   require('packer').sync()
