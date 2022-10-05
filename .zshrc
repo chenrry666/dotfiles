@@ -9,7 +9,7 @@ fi
 setopt interactivecomments 
 setopt autocd
 setopt extendedglob
-setopt globcomplete
+#setopt globcomplete
 setopt completeinword
 setopt correct
 

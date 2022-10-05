@@ -17,19 +17,18 @@ default_setting['opt'] = {
     encoding = "utf-8",
     path = vim.o.path .. ",./**",
 --    omnifunc = 'v:lua.vim.lsp.omnifunc', -- for default lsp
-    tabstop = 4, -- replace tab as white space
+    tabstop = 2, -- replace tab as white space
     expandtab = true,
-    shiftwidth = 4,
+    shiftwidth = 2,
 --    conceallevel = 2,
 --    concealcursor = '', -- if set to nc, char will always fold except in insert mode
-    softtabstop = 4,
+    softtabstop = 2,
     foldenable = true, -- enable fold
-    foldmethod = 'marker',
     foldlevel = 99, -- disable fold for opened file
     foldminlines = 2, -- 0 means even the child is only one line, fold always works
---    foldmethod = 'expr', -- for most filetype, fold by syntax
+    foldmethod = 'expr', -- for most filetype, fold by syntax
 --    foldnestmax = 5, -- max fold nest
---    foldexpr = "nvim_treesitter#foldexpr()",
+    foldexpr = "nvim_treesitter#foldexpr()",
     --completeopt = "menu,menuone,noselect",
     completeopt = "menuone,noselect",
     --t_ut = " ",                               -- disable Backgroud color Erase（BCE）
@@ -37,7 +36,18 @@ default_setting['opt'] = {
 --    colorcolumn = "99999" -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 }
 
+
 for key, value in pairs(default_setting['opt']) do
     vim.o[key] = value
 end
-
+-- vim.opt.foldmethod     = 'expr'
+-- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+---WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469
+vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+  callback = function()
+    vim.opt.foldmethod     = 'expr'
+    vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+  end
+})
+---ENDWORKAROUND

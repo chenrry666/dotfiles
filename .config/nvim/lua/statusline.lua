@@ -22,44 +22,44 @@ local buffer_not_empty = function()
   return false
 end
 
-gls.left[2] = {
+gls.left[1] = {
   ViMode = {
     provider = function()
       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', [''] = 'VISUAL BLOCK'}
       return '  '..alias[vim.fn.mode()] .. ' '
     end,
     highlight = {colors.darkblue,colors.purple,'bold'},
-    separator = '  ',
+    separator = ' ',
     separator_highlight = {colors.magenta,colors.darkblue},
   },
 }
-gls.left[3] ={
+gls.left[2] ={
   FileIcon = {
     provider = 'FileIcon',
-    separator = '  ',
+    separator = ' ',
     separator_highlight = {colors.magenta,colors.darkblue},
     condition = buffer_not_empty,
     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.darkblue},
   },
 }
-gls.left[4] = {
+gls.left[3] = {
   FileName = {
     provider = {'FileName','FileSize'},
     condition = buffer_not_empty,
     highlight = {colors.magenta,colors.darkblue},
-    separator = '  ',
+    separator = ' ',
     separator_highlight = {colors.magenta,colors.purple},
   }
 }
 
-gls.left[5] = {
+gls.left[4] = {
   GitIcon = {
     provider = function() return '  ' end,
     condition = buffer_not_empty,
     highlight = {colors.orange,colors.purple},
   }
 }
-gls.left[6] = {
+gls.left[5] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = buffer_not_empty,
@@ -75,7 +75,7 @@ local checkwidth = function()
   return false
 end
 
-gls.left[7] = {
+gls.left[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
@@ -83,7 +83,7 @@ gls.left[7] = {
     highlight = {colors.green,colors.purple},
   }
 }
-gls.left[8] = {
+gls.left[7] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
@@ -91,7 +91,7 @@ gls.left[8] = {
     highlight = {colors.orange,colors.purple},
   }
 }
-gls.left[9] = {
+gls.left[8] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
