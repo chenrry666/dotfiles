@@ -40,57 +40,14 @@ packer.init {
   },
 }
 
-local use = packer.use
+-- global variable
+use = packer.use
 
 use 'wbthomason/packer.nvim'
 
-use {
-  'glepnir/galaxyline.nvim',
-  branch = 'main',
-  config = function()
-    require 'statusline'
-  end,
-  requires = 'kyazdani42/nvim-web-devicons',
-}
-
-use {
-  'glepnir/zephyr-nvim',
-  requires = 'nvim-treesitter/nvim-treesitter',
-  config = function()
-    require 'zephyr'
-  end,
-}
-
-use {
-  'nvim-treesitter/nvim-treesitter',
-  run = function()
-    require('nvim-treesitter.install').update { with_sync = true }
-  end,
-  config = function()
-    require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'lua' },
-      sync_install = false,
-      -- Automatically install missing parsers when entering buffer
-      auto_install = false,
-      ignore_install = { 'javascript', 'c', 'rust' },
-      -- parser_install_dir = "/some/path/to/store/parsers",
-      -- If you want to change install path,
-      -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-      highlight = {
-        enable = true,
-        -- disable slow treesitter highlight for large files
-        disable = function(lang, buf)
-          local max_filesize = 100 * 1024 -- 100 KB
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          if ok and stats and stats.size > max_filesize then
-            return true
-          end
-        end,
-        additional_vim_regex_highlighting = false,
-      },
-    }
-  end,
-}
+require "theme"
+require "statusline"
+require "tree-sitter"
 
 if packer_bootstrap then
   require('packer').sync()
