@@ -1,4 +1,5 @@
 local default_setting = {}
+vim.scriptencoding = 'utf-8'
 
 default_setting['opt'] = {
   number = true,
@@ -29,9 +30,9 @@ default_setting['opt'] = {
   foldmethod = 'expr', -- for most filetype, fold by syntax
   --    foldnestmax = 5, -- max fold nest
   foldexpr = 'nvim_treesitter#foldexpr()',
-  --completeopt = "menu,menuone,noselect",
+  completeopt = "menu,menuone,noselect",
   completeopt = 'menuone,noselect',
-  --t_ut = " ",                               -- disable Backgroud color Erase（BCE）
+  t_ut = " ",                               -- disable Backgroud color Erase（BCE）
   termguicolors = true, -- TODO
   --    colorcolumn = "99999" -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 }
@@ -40,9 +41,9 @@ for key, value in pairs(default_setting['opt']) do
   vim.o[key] = value
 end
 
+---WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469
 -- vim.opt.foldmethod     = 'expr'
 -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
----WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
   callback = function()
