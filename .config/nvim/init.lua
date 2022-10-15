@@ -3,8 +3,7 @@
 
 require 'core'
 if require 'bootstrap'.ensure_packer() then
-  local packer = require 'packer'	
+  local packer = require 'packer'
   packer.sync()
 end
 require 'plugin'
-

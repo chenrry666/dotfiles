@@ -2,7 +2,7 @@ use {
   'glepnir/galaxyline.nvim',
   branch = 'main',
   config = function()
-    gl = require 'galaxyline'
+    local gl = require 'galaxyline'
     local gls = gl.section
     gl.short_line_list = { 'LuaTree', 'vista', 'dbui' }
     local colors = {
@@ -30,7 +30,7 @@ use {
       ViMode = {
         provider = function()
           local alias =
-            { n = 'NORMAL', i = 'INSERT', c = 'COMMAND', v = 'VISUAL', V = 'VISUAL LINE', [''] = 'VISUAL BLOCK' }
+          { n = 'NORMAL', i = 'INSERT', c = 'COMMAND', v = 'VISUAL', V = 'VISUAL LINE', [''] = 'VISUAL BLOCK' }
           return '  ' .. alias[vim.fn.mode()] .. ' '
         end,
         highlight = { colors.darkblue, colors.purple, 'bold' },

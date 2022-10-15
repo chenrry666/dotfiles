@@ -1,54 +1,71 @@
-local default_setting = {}
+local o = vim.o
+local g = vim.g
 vim.scriptencoding = 'utf-8'
+o.fileencodings = 'utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1'
+o.encoding = 'utf-8'
 
-default_setting['opt'] = {
-  number = true,
-  relativenumber = true,
-  ignorecase = true,
-  undofile = false, -- use undo file
-  swapfile = false, -- use swap file
-  maxmempattern = 2000, -- max match pattern
-  autochdir = true, -- auto change directory to current file
-  lazyredraw = true, -- true will speed up in macro repeat
-  ttyfast = true, -- true maybe as lazyredraw ? TODO
-  wrap = false,
-  mouse = 'a',
-  hidden = true, -- permit of change buffer when the buffer is not been written
-  fileencodings = 'utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1',
-  encoding = 'utf-8',
-  path = vim.o.path .. ',./**',
-  --    omnifunc = 'v:lua.vim.lsp.omnifunc', -- for default lsp
-  tabstop = 2, -- replace tab as white space
-  expandtab = true,
-  shiftwidth = 2,
-  --    conceallevel = 2,
-  --    concealcursor = '', -- if set to nc, char will always fold except in insert mode
-  softtabstop = 2,
-  foldenable = true, -- enable fold
-  foldlevel = 99, -- disable fold for opened file
-  foldminlines = 2, -- 0 means even the child is only one line, fold always works
-  foldmethod = 'expr', -- for most filetype, fold by syntax
-  --    foldnestmax = 5, -- max fold nest
-  foldexpr = 'nvim_treesitter#foldexpr()',
-  completeopt = "menu,menuone,noselect",
-  completeopt = 'menuone,noselect',
-  t_ut = " ",                               -- disable Backgroud color Erase（BCE）
-  termguicolors = true, -- TODO
-  --    colorcolumn = "99999" -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+o.number = true
+o.relativenumber = true
+o.ignorecase = true
+o.smartcase = true
+o.undofile = false
+o.swapfile = false
+
+o.maxmempattern = 2000 -- max match pattern
+o.autochdir = true -- auto change directory to current file
+o.autoload = true
+o.lazyredraw = true -- true will speed up in macro repeat
+o.ttyfast = true -- true maybe as lazyredraw ? TODO
+
+o.wrap = false
+o.mouse = 'a'
+o.hidden = true -- permit of change buffer when the buffer is not been written
+o.termguicolors = true -- TODO
+
+o.path = o.path .. ',./**'
+
+o.tabstop = 2 -- replace tab as white space
+o.expandtab = true
+o.shiftwidth = 2
+o.softtabstop = 2
+
+o.conceallevel = 2
+o.concealcursor = '' -- if set to nc char will always fold except in insert mode
+
+o.foldenable = true -- enable fold
+o.foldlevel = 99 -- disable fold for opened file
+o.foldminlines = 2 -- 0 means even the child is only one line fold always works
+o.foldmethod = 'expr' -- for most filetype fold by syntax
+o.foldnestmax = 5 -- max fold nest
+
+o.completeopt = 'menu,menuone,noselect'
+o.t_ut = ' ' -- disable Backgroud color Erase（BCE）
+o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+
+-- Leader/local leader
+g.mapleader = [[ ]]
+g.maplocalleader = [[,]]
+
+-- Skip some remote provider loading
+g.loaded_python3_provider = 0
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- Disable some built-in plugins we don't want
+local disabled_built_ins = {
+  'gzip',
+  'man',
+  'matchit',
+  'matchparen',
+  'shada_plugin',
+  'tarPlugin',
+  'tar',
+  'zipPlugin',
+  'zip',
+  --  'netrwPlugin',
 }
 
-for key, value in pairs(default_setting['opt']) do
-  vim.o[key] = value
+for i = 1, #disabled_built_ins do
+  g['loaded_' .. disabled_built_ins[i]] = 1
 end
-
----WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
-  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-  callback = function()
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-  end,
-})
----ENDWORKAROUND
