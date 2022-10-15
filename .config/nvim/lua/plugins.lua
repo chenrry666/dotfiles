@@ -45,9 +45,9 @@ use = packer.use
 
 use 'wbthomason/packer.nvim'
 
-require "theme"
-require "statusline"
-require "tree-sitter"
+require 'theme'
+require 'statusline'
+require 'tree-sitter'
 
 if packer_bootstrap then
   require('packer').sync()
