@@ -25,12 +25,21 @@ use {
       end
       return false
     end
-
+   
+    -- avoid dupilicate mode showing like '-- INSERT --' etc.
+    vim.o.showmode = false
     gls.left[1] = {
       ViMode = {
         provider = function()
-          local alias =
-          { n = 'NORMAL', i = 'INSERT', c = 'COMMAND', v = 'VISUAL', V = 'VISUAL LINE', [''] = 'VISUAL BLOCK' }
+          local alias = {
+            n = 'NORMAL',
+            i = 'INSERT',
+            c = 'COMMAND',
+            v = 'VISUAL',
+            V = 'VISUAL LINE',
+            [''] = 'VISUAL BLOCK',
+            t = 'TERMINAL',
+          }
           return '  ' .. alias[vim.fn.mode()] .. ' '
         end,
         highlight = { colors.darkblue, colors.purple, 'bold' },
