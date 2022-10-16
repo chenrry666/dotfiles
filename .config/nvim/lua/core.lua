@@ -1,5 +1,6 @@
 local o = vim.o
 local g = vim.g
+
 vim.scriptencoding = 'utf-8'
 o.fileencodings = 'utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1'
 o.encoding = 'utf-8'
@@ -19,8 +20,8 @@ o.ttyfast = true -- true maybe as lazyredraw ? TODO
 
 o.wrap = false
 o.mouse = 'a'
-o.hidden = true -- permit of change buffer when the buffer is not been written
-o.termguicolors = true -- TODO
+o.hidden = true 
+o.termguicolors = true 
 
 o.path = o.path .. ',./**'
 
@@ -37,6 +38,9 @@ o.foldlevel = 99 -- disable fold for opened file
 o.foldminlines = 2 -- 0 means even the child is only one line fold always works
 o.foldmethod = 'expr' -- for most filetype fold by syntax
 o.foldnestmax = 5 -- max fold nest
+
+-- Clipboard
+o.clipboard = "unnamedplus"
 
 o.completeopt = 'menu,menuone,noselect'
 o.t_ut = ' ' -- disable Backgroud color Erase（BCE）
