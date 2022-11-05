@@ -12,7 +12,7 @@ o.smartcase = true
 o.undofile = false
 o.swapfile = false
 o.scrolloff = 5
-o.shiftscrolloff= 5
+o.shiftscrolloff = 5
 
 o.maxmempattern = 2000 -- max match pattern
 o.autochdir = true -- auto change directory to current file
@@ -22,8 +22,8 @@ o.ttyfast = true -- true maybe as lazyredraw ? TODO
 
 o.wrap = false
 o.mouse = 'a'
-o.hidden = true 
-o.termguicolors = true 
+o.hidden = true
+o.termguicolors = true
 
 o.path = o.path .. ',./**'
 
@@ -42,7 +42,7 @@ o.foldmethod = 'expr' -- for most filetype fold by syntax
 o.foldnestmax = 5 -- max fold nest
 
 -- Clipboard
-o.clipboard = "unnamedplus"
+o.clipboard = 'unnamedplus'
 
 o.completeopt = 'menu,menuone,noselect'
 o.t_ut = ' ' -- disable Backgroud color Erase（BCE）

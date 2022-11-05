@@ -15,6 +15,9 @@ function plugin:config()
     -- parser_install_dir = "/some/path/to/store/parsers",
     -- If you want to change install path,
     -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+    indent = {
+      enable = true,
+    },
     highlight = {
       enable = true,
       -- disable slow treesitter highlight for large files
