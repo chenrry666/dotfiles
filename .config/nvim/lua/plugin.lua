@@ -1,9 +1,8 @@
 local packer = require 'packer'
 -- global variable
-use = packer.use
+packer.reset()
+packer.use 'wbthomason/packer.nvim'
 
-use 'wbthomason/packer.nvim'
-
-require 'plugin/theme'
-require 'plugin/statusline'
-require 'plugin/tree-sitter'
+packer.use(require 'plugin/theme')
+packer.use(require 'plugin/statusline')
+packer.use(require 'plugin/tree-sitter')
