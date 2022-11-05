@@ -3,6 +3,11 @@ local packer = require 'packer'
 packer.reset()
 packer.use 'wbthomason/packer.nvim'
 
-packer.use(require 'plugin/theme')
-packer.use(require 'plugin/statusline')
-packer.use(require 'plugin/tree-sitter')
+local function plugin(path)
+  packer.use(require(path))
+end
+
+plugin 'plugin.theme'
+plugin 'plugin.statusline'
+plugin 'plugin.tree-sitter'
+plugin 'plugin.cmp'
