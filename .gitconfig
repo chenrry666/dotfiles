@@ -1,8 +1,8 @@
 [user]
 	name = arch
 	email = chengruichen3@gmail.com
-#[url "https://hub.fastgit.org/"]
-#	insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [protocol "https"]
 	allow = always
 [init]
