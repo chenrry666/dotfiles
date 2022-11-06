@@ -34,42 +34,42 @@ function plugin:config()
       Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
 
       CmpItemAbbrDeprecated = { fg = '#7E8294', bg = 'NONE', strikethrough = true },
-      CmpItemAbbrMatch = { fg = '#82AAFF', bg = 'NONE', bold = true },
-      CmpItemAbbrMatchFuzzy = { fg = '#82AAFF', bg = 'NONE', bold = true },
       CmpItemMenu = { fg = '#C792EA', bg = 'NONE', italic = true },
+      CmpItemAbbrMatch = { fg = '#82AAFF', bg = 'NONE', bold = true },
+      CmpItemAbbrMatchFuzzy = 'CmpItemAbbrMatch',
 
       CmpItemKindField = { fg = '#EED8DA', bg = '#B5585F' },
-      CmpItemKindProperty = { fg = '#EED8DA', bg = '#B5585F' },
-      CmpItemKindEvent = { fg = '#EED8DA', bg = '#B5585F' },
+      CmpItemKindProperty = 'CmpItemKindField',
+      CmpItemKindEvent = 'CmpItemKindField',
 
       CmpItemKindText = { fg = '#C3E88D', bg = '#9FBD73' },
-      CmpItemKindEnum = { fg = '#C3E88D', bg = '#9FBD73' },
-      CmpItemKindKeyword = { fg = '#C3E88D', bg = '#9FBD73' },
+      CmpItemKindEnum = 'CmpItemKindText',
+      CmpItemKindKeyword = 'CmpItemKindText',
 
       CmpItemKindConstant = { fg = '#FFE082', bg = '#D4BB6C' },
-      CmpItemKindConstructor = { fg = '#FFE082', bg = '#D4BB6C' },
-      CmpItemKindReference = { fg = '#FFE082', bg = '#D4BB6C' },
+      CmpItemKindConstructor = 'CmpItemKindConstant',
+      CmpItemKindReference = 'CmpItemKindConstant',
 
       CmpItemKindFunction = { fg = '#EADFF0', bg = '#A377BF' },
-      CmpItemKindStruct = { fg = '#EADFF0', bg = '#A377BF' },
-      CmpItemKindClass = { fg = '#EADFF0', bg = '#A377BF' },
-      CmpItemKindModule = { fg = '#EADFF0', bg = '#A377BF' },
-      CmpItemKindOperator = { fg = '#EADFF0', bg = '#A377BF' },
+      CmpItemKindStruct = 'CmpItemKindFunction',
+      CmpItemKindClass = 'CmpItemKindFunction',
+      CmpItemKindModule = 'CmpItemKindFunction',
+      CmpItemKindOperator = 'CmpItemKindFunction',
 
       CmpItemKindVariable = { fg = '#C5CDD9', bg = '#7E8294' },
-      CmpItemKindFile = { fg = '#C5CDD9', bg = '#7E8294' },
+      CmpItemKindFile = 'CmpItemKindVariable',
 
       CmpItemKindUnit = { fg = '#F5EBD9', bg = '#D4A959' },
-      CmpItemKindSnippet = { fg = '#F5EBD9', bg = '#D4A959' },
-      CmpItemKindFolder = { fg = '#F5EBD9', bg = '#D4A959' },
+      CmpItemKindSnippet = 'CmpItemKindUnit',
+      CmpItemKindFolder = 'CmpItemKindUnit',
 
       CmpItemKindMethod = { fg = '#DDE5F5', bg = '#6C8ED4' },
-      CmpItemKindValue = { fg = '#DDE5F5', bg = '#6C8ED4' },
-      CmpItemKindEnumMember = { fg = '#DDE5F5', bg = '#6C8ED4' },
+      CmpItemKindValue = 'CmpItemKindMethod',
+      CmpItemKindEnumMember = 'CmpItemKindMethod',
 
       CmpItemKindInterface = { fg = '#D8EEEB', bg = '#58B5A8' },
-      CmpItemKindColor = { fg = '#D8EEEB', bg = '#58B5A8' },
-      CmpItemKindTypeParameter = { fg = '#D8EEEB', bg = '#58B5A8' },
+      CmpItemKindColor = 'CmpItemKindInterface',
+      CmpItemKindTypeParameter = 'CmpItemKindInterface',
     }
 
     for k, v in pairs(hls) do
@@ -93,11 +93,6 @@ function plugin:config()
     -- documentation = cmp.config.window.bordered(),
   }
 
-  local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
-  end
-
   local luasnip = require 'luasnip'
   cmp_conf.snippet = {
     expand = function(args)
@@ -105,6 +100,10 @@ function plugin:config()
     end,
   }
 
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
+  end
   cmp_conf.mapping = cmp.mapping.preset.insert {
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -201,10 +200,6 @@ function plugin:config()
   -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
   --   capabilities = capabilities,
   -- }
-
-  require('nvim-autopairs').setup {
-    enable_check_bracket_line = false,
-  }
 
   local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
