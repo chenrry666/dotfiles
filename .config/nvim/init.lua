@@ -2,5 +2,4 @@
 --  $> nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 require 'core'
-require 'bootstrap'.bootstrap()
-
+require('bootstrap').bootstrap()

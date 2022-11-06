@@ -5,6 +5,9 @@ local plugin = {
 }
 
 function plugin.config()
+  -- global status line (require nvim 0.7 or later)
+  vim.o.laststatus = 3
+
   local gl = require 'galaxyline'
   local gls = gl.section
   gl.short_line_list = { 'LuaTree', 'vista', 'dbui' }
