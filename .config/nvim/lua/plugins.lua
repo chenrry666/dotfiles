@@ -1,6 +1,6 @@
 local packer = require 'packer'
--- global variable
 packer.reset()
+-- manage packer itself
 packer.use 'wbthomason/packer.nvim'
 
 local function plugin(path)
