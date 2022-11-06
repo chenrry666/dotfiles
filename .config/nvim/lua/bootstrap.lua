@@ -31,7 +31,7 @@ module.bootstrap = function()
     },
   }
 
-  require 'plugin'
+  require 'plugins'
 
   if first_run then
     packer.sync()
