@@ -20,7 +20,7 @@ local plugin = {
   },
 }
 
-function plugin:config()
+function plugin.config()
   -- Set up nvim-cmp.
   local cmp = require 'cmp'
 

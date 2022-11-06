@@ -5,7 +5,7 @@ local plugin = {
   end,
 }
 
-function plugin:config()
+function plugin.config()
   require('nvim-treesitter.configs').setup {
     ensure_installed = { 'lua' },
     sync_install = false,

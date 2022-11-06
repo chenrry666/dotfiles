@@ -3,7 +3,8 @@ local plugin = {
   branch = 'main',
   requires = 'kyazdani42/nvim-web-devicons',
 }
-function plugin:config()
+
+function plugin.config()
   local gl = require 'galaxyline'
   local gls = gl.section
   gl.short_line_list = { 'LuaTree', 'vista', 'dbui' }
