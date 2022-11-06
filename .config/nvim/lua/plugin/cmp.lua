@@ -105,10 +105,10 @@ function plugin:config()
     PmenuSel = { bg = '#282C34', fg = 'NONE' },
     Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
 
-    CmpItemAbbrDeprecated = { fg = '#7E8294', bg = 'NONE', fmt = 'strikethrough' },
-    CmpItemAbbrMatch = { fg = '#82AAFF', bg = 'NONE', fmt = 'bold' },
-    CmpItemAbbrMatchFuzzy = { fg = '#82AAFF', bg = 'NONE', fmt = 'bold' },
-    CmpItemMenu = { fg = '#C792EA', bg = 'NONE', fmt = 'italic' },
+    CmpItemAbbrDeprecated = { fg = '#7E8294', bg = 'NONE', strikethrough = true },
+    CmpItemAbbrMatch = { fg = '#82AAFF', bg = 'NONE', bold = true },
+    CmpItemAbbrMatchFuzzy = { fg = '#82AAFF', bg = 'NONE', bold = true },
+    CmpItemMenu = { fg = '#C792EA', bg = 'NONE', italic = true },
 
     CmpItemKindField = { fg = '#EED8DA', bg = '#B5585F' },
     CmpItemKindProperty = { fg = '#EED8DA', bg = '#B5585F' },
