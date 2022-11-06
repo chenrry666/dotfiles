@@ -76,7 +76,7 @@ function plugin:config()
       if type(v) == 'table' then
         vim.api.nvim_set_hl(0, k, v)
       else
-        vim.highlight.link(k, v, true)
+        vim.api.nvim_set_hl(0, k, hls[v])
       end
     end
   end
