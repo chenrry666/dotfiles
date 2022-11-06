@@ -1,16 +1,40 @@
-local packer = require 'packer'
-packer.reset()
--- manage packer itself
-packer.use 'wbthomason/packer.nvim'
+local module = {}
+function module.bootstrap()
+  local fn = vim.fn
+  local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
-local function plugin(path)
-  packer.use(require(path))
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+    vim.cmd [[packadd packer.nvim]]
+  end
+  -- TODO:
+  -- check if it clones successfully
 end
 
-plugin 'plugin.theme'
-plugin 'plugin.statusline'
-plugin 'plugin.tree-sitter'
-plugin 'plugin.cmp'
-plugin 'plugin.pairs'
-plugin 'plugin.tree'
-plugin 'plugin.lsp'
+function module.init()
+  -- TODO
+  local packer = require 'packer'
+  packer.init {
+    ensure_dependencies = true,
+    git = {
+      depth = 1,
+      clone_timeout = 60,
+      default_url_format = 'https://github.com/%s',
+    },
+    display = {
+      open_fn = function()
+        return require('packer.util').float { border = 'rounded' }
+      end,
+    },
+  }
+
+  packer.reset()
+  -- manage packer itself
+  packer.use 'wbthomason/packer.nvim'
+end
+
+function module.add_plugin(name)
+  -- must be under folder plugin
+  require('packer').use(require('plugin.' .. name))
+end
+return module

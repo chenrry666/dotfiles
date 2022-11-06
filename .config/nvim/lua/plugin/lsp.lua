@@ -41,7 +41,6 @@ function plugin.config()
   end
 
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-  
 end
 
 return plugin
