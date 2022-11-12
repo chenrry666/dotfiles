@@ -40,6 +40,7 @@ function plugin.config()
     end, bufopts)
   end
 
+  local lspconfig = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lua_library = vim.api.nvim_get_runtime_file('', true)
   table.insert(lua_library, '/usr/share/luajit-2.1.0-beta3')

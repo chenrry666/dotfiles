@@ -1,6 +1,5 @@
 local plugin = {
   'windwp/nvim-autopairs',
-  after = 'hrsh7th/nvim-cmp',
 }
 
 function plugin.config()

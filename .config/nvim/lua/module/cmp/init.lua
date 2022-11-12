@@ -27,7 +27,7 @@ function plugin.config()
   -- General configurations
   local cmp_conf = {}
 
-  local kind = require 'plugin.cmp.kind'
+  local kind = require 'module.cmp.kind'
   kind.update(cmp_conf)
 
   local luasnip = require 'luasnip'
