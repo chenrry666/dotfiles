@@ -45,7 +45,6 @@ o.foldnestmax = 5 -- max fold nest
 o.clipboard = 'unnamedplus'
 
 o.completeopt = {'menu','menuone','noselect'}
-o.t_ut = ' ' -- disable Backgroud color Erase（BCE）
 o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 
 -- Leader/local leader
@@ -57,10 +56,6 @@ g.loaded_python3_provider = 0
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
-
--- Use new filetype.lua instead of old filtype.vim because it's slow
--- well in the PR 'feat(runtime)!: remove filetype.vim #20428'
--- filetype.lua is enabled by default, so we don't need to do anything
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
