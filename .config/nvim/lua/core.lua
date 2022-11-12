@@ -12,7 +12,7 @@ o.smartcase = true
 o.undofile = false
 o.swapfile = false
 o.scrolloff = 5
-o.shiftscrolloff = 5
+o.sidescrolloff = 5
 
 o.maxmempattern = 2000 -- max match pattern
 o.autochdir = true -- auto change directory to current file
