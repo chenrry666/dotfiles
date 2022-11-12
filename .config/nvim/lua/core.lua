@@ -2,7 +2,7 @@ local o = vim.opt
 local g = vim.g
 
 vim.scriptencoding = 'utf-8'
-o.fileencodings = {'utf-8','ucs-bom','gb18030','gbk','gb2312','cp936','latin1'}
+o.fileencodings = { 'utf-8', 'ucs-bom', 'gb18030', 'gbk', 'gb2312', 'cp936', 'latin1' }
 o.encoding = 'utf-8'
 
 o.number = true
@@ -44,7 +44,7 @@ o.foldnestmax = 5 -- max fold nest
 -- Clipboard
 o.clipboard = 'unnamedplus'
 
-o.completeopt = {'menu','menuone','noselect'}
+o.completeopt = { 'menu', 'menuone', 'noselect' }
 o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 
 -- Leader/local leader

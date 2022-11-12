@@ -116,7 +116,6 @@ function plugin.config()
       { name = 'cmdline' },
     }),
   })
-
 end
 
 return plugin

@@ -1,12 +1,12 @@
 local plugin = {
   'nvim-treesitter/nvim-treesitter',
   run = function()
-    require('nvim-treesitter.install').update { with_sync = true }
+    require 'nvim-treesitter.install'.update { with_sync = true }
   end,
 }
 
 function plugin.config()
-  require('nvim-treesitter.configs').setup {
+  require 'nvim-treesitter.configs'.setup {
     ensure_installed = { 'lua' },
     sync_install = false,
     -- Automatically install missing parsers when entering buffer

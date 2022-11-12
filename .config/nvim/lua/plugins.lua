@@ -23,7 +23,7 @@ function module.init()
     },
     display = {
       open_fn = function()
-        return require('packer.util').float { border = 'rounded' }
+        return require 'packer.util'.float { border = 'rounded' }
       end,
     },
   }
@@ -35,6 +35,7 @@ end
 
 function module.add_plugin(name)
   -- must be under folder plugin
-  require('packer').use(require('module.' .. name))
+  require 'packer'.use(require('module.' .. name))
 end
+
 return module
