@@ -35,6 +35,6 @@ end
 
 function module.add_plugin(name)
   -- must be under folder plugin
-  require('packer').use(require('plugin.' .. name))
+  require('packer').use(require('module.' .. name))
 end
 return module
