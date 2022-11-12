@@ -16,7 +16,7 @@ o.sidescrolloff = 5
 
 o.maxmempattern = 2000 -- max match pattern
 o.autochdir = true -- auto change directory to current file
-o.autoload = true
+o.autoread = true
 o.lazyredraw = true -- true will speed up in macro repeat
 o.ttyfast = true -- true maybe as lazyredraw ? TODO
 
