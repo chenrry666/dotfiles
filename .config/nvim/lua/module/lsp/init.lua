@@ -1,8 +1,11 @@
+local module = {}
+table.insert(module, require 'module.lsp.saga')
+
+-- TODO split keymaps.lua from cmp and lsp
 local plugin = {
   'neovim/nvim-lspconfig',
 }
-table.insert(plugin, require 'module.lsp.saga')
--- TODO split keymaps.lua from cmp and lsp
+
 function plugin.config()
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -44,4 +47,5 @@ function plugin.config()
   require 'module.lsp.lua'.setup { capabilities = capabilities, on_attach = on_attach }
 end
 
-return plugin
+table.insert(module, plugin)
+return module

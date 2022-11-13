@@ -1,6 +1,8 @@
-local plugin = {}
+local module = {}
+table.insert(module, require "module.cmp.pairs")
+table.insert(module, require "module.cmp.luasnip")
 
-table.insert(plugin, {
+local plugin = {
   'hrsh7th/nvim-cmp',
   requires = {
     -- Completion sources
@@ -20,9 +22,7 @@ table.insert(plugin, {
     'neovim/nvim-lspconfig',
     'onsails/lspkind.nvim',
   },
-})
-table.insert(plugin, require "module.cmp.pairs")
-table.insert(plugin, require "module.cmp.luasnip")
+}
 
 function plugin.config()
   -- Set up nvim-cmp.
@@ -122,4 +122,5 @@ function plugin.config()
   })
 end
 
-return plugin
+table.insert(module, plugin) 
+return module
