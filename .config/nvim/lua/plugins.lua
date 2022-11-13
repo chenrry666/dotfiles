@@ -1,5 +1,5 @@
-local module = {}
-function module.bootstrap()
+local M = {}
+function M.bootstrap()
   local fn = vim.fn
   local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
@@ -11,7 +11,7 @@ function module.bootstrap()
   -- check if it clones successfully
 end
 
-function module.init()
+function M.init()
   -- TODO
   local packer = require 'packer'
   packer.init {
@@ -33,9 +33,9 @@ function module.init()
   packer.use 'wbthomason/packer.nvim'
 end
 
-function module.add_plugin(name)
+function M.add_plugin(name)
   -- must be under folder plugin
   require 'packer'.use(require('module.' .. name))
 end
 
-return module
+return M
