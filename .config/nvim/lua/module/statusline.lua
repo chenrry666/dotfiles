@@ -37,6 +37,7 @@ function plugin.config()
   gls.left[1] = {
     ViMode = {
       provider = function()
+        --[[
         local alias = {
           n = 'NORMAL',
           i = 'INSERT',
@@ -46,7 +47,8 @@ function plugin.config()
           [''] = 'VISUAL BLOCK',
           t = 'TERMINAL',
         }
-        return '  ' .. alias[vim.fn.mode()] .. ' '
+        ]]
+        return '  ' .. vim.fn.mode() .. ' '
       end,
       highlight = { colors.darkblue, colors.purple, 'bold' },
       separator = ' ',

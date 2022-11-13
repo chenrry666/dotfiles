@@ -1,7 +1,7 @@
 local M = {}
-
+--[[
 local function hls(hl)
-  for k, v in pairs(hl) do
+    for k, v in pairs(hl) do
     if type(v) == 'table' then
       vim.api.nvim_set_hl(0, k, v)
     else
@@ -9,10 +9,11 @@ local function hls(hl)
     end
   end
 end
-
+]]
 function M.update(cmp_conf)
   -- Define highlight groups for the window.completion.winhighlight below
   -- Completion menu highlighting
+  --[[
   hls {
     PmenuSel = { bg = '#282C34', fg = 'NONE' },
     Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
@@ -55,7 +56,7 @@ function M.update(cmp_conf)
     CmpItemKindColor = 'CmpItemKindInterface',
     CmpItemKindTypeParameter = 'CmpItemKindInterface',
   }
-
+  ]]
   cmp_conf.window = {
     completion = {
       winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
