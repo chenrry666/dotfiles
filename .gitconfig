@@ -3,8 +3,6 @@
 	email = chengruichen3@gmail.com
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-[protocol "https"]
-	allow = always
 [init]
 	defaultBranch = master
 [color]
