@@ -19,6 +19,8 @@ local plugin = {
     'onsails/lspkind.nvim',
   },
 }
+table.insert(plugin, require "module.cmp.pairs")
+table.insert(plugin, require "module.cmp.luasnip")
 
 function plugin.config()
   -- Set up nvim-cmp.
