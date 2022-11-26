@@ -1,9 +1,13 @@
-local plugin = {
-  'glepnir/zephyr-nvim',
-  requires = 'nvim-treesitter/nvim-treesitter',
-  config = function()
-    require 'zephyr'
-  end,
+local onenord = {
+  'rmehri01/onenord.nvim',
 }
 
-return plugin
+function onenord.config()
+  require 'onenord'.setup {
+    disable = {
+      background = true,
+    },
+  }
+end
+
+return onenord
