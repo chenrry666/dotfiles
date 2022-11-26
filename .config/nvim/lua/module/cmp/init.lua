@@ -1,25 +1,23 @@
 local module = {}
-table.insert(module, require "module.cmp.pairs")
-table.insert(module, require "module.cmp.luasnip")
+table.insert(module, require 'module.cmp.pairs')
+table.insert(module, require 'module.cmp.luasnip')
+table.insert(module, require 'module.cmp.comment')
 
 local plugin = {
   'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
   requires = {
     -- Completion sources
+    'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-calc',
 
-    -- Snippet engine
-    'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
 
     'windwp/nvim-autopairs',
 
-    -- For LSPs
-    'hrsh7th/cmp-nvim-lsp',
-    'neovim/nvim-lspconfig',
     'onsails/lspkind.nvim',
   },
 }
@@ -122,5 +120,5 @@ function plugin.config()
   })
 end
 
-table.insert(module, plugin) 
+table.insert(module, plugin)
 return module
