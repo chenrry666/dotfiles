@@ -16,6 +16,7 @@ local plugins = {
     config = function() require 'plugins' end,
   },
 
+  ["lewis6991/impatient.nvim"] = {},
 }
 
 vim.cmd.packadd("packer.nvim")
@@ -27,7 +28,6 @@ if status_ok then
         if type(key) == 'string' and not plugin[1] then plugin[1] = key end
         use(plugin)
       end
-      use(require 'module.profile')
       use(require 'module.tree-sitter')
       use(require 'module.statusline')
       use(require 'module.theme')

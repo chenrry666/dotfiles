@@ -1,5 +1,25 @@
+local module = {}
+table.insert(module,
+    { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
+
 local plugin = {
   'nvim-treesitter/nvim-treesitter',
+  module = 'nvim-treesitter',
+  cmd = {
+      'TSBufDisable',
+      'TSBufEnable',
+      'TSBufToggle',
+      'TSDisable',
+      'TSEnable',
+      'TSToggle',
+      'TSInstall',
+      'TSInstallInfo',
+      'TSInstallSync',
+      'TSModuleInfo',
+      'TSUninstall',
+      'TSUpdate',
+      'TSUpdateSync',
+  },
   run = function()
     require 'nvim-treesitter.install'.update { with_sync = true }
   end,
@@ -8,13 +28,6 @@ local plugin = {
 function plugin.config()
   require 'nvim-treesitter.configs'.setup {
     ensure_installed = { 'lua' },
-    sync_install = false,
-    -- Automatically install missing parsers when entering buffer
-    auto_install = false,
-    ignore_install = { 'javascript', 'c', 'rust' },
-    -- parser_install_dir = "/some/path/to/store/parsers",
-    -- If you want to change install path,
-    -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
     indent = {
       enable = true,
     },
@@ -44,4 +57,7 @@ function plugin.config()
   ---ENDWORKAROUND
 end
 
-return plugin
+table.insert(module, plugin)
+
+
+return module
