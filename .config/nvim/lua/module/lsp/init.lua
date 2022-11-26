@@ -62,9 +62,6 @@ function plugin.config()
 
     -- Float terminal
     vim.keymap.set('n', '<A-d>', '<cmd>Lspsaga open_floaterm<CR>', bufopts)
-    -- if you want pass somc cli command into terminal you can do like this
-    -- open lazygit in lspsaga float terminal
-    vim.keymap.set('n', '<A-d>', '<cmd>Lspsaga open_floaterm lazygit<CR>', bufopts)
     -- close floaterm
     vim.keymap.set('t', '<A-d>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], bufopts)
     -- Enable completion triggered by <c-x><c-o>

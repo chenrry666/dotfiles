@@ -6,11 +6,11 @@ local plugin = {
 
 function plugin.config()
   -- global status line (require nvim 0.7 or later)
-  vim.o.laststatus = 3
+  vim.o.laststatus = 2
 
   local gl = require 'galaxyline'
   local gls = gl.section
-  gl.short_line_list = { 'LuaTree', 'vista', 'dbui' }
+  gl.short_line_list = { 'NvimTree', 'vista', 'dbui' }
   local colors = {
     bg = '#282c34',
     yellow = '#fabd2f',

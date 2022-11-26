@@ -19,7 +19,6 @@ local plugins = {
   ["lewis6991/impatient.nvim"] = {},
 }
 
-vim.cmd.packadd("packer.nvim")
 local status_ok, packer = pcall(require, 'packer')
 if status_ok then
   packer.startup {

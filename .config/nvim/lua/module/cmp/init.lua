@@ -5,7 +5,7 @@ table.insert(module, require 'module.cmp.comment')
 
 local plugin = {
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+  event = { 'InsertEnter', 'CmdlineEnter' },
   requires = {
     -- Completion sources
     'hrsh7th/cmp-nvim-lsp',
@@ -15,8 +15,6 @@ local plugin = {
     'hrsh7th/cmp-calc',
 
     'saadparwaiz1/cmp_luasnip',
-
-    'windwp/nvim-autopairs',
 
     'onsails/lspkind.nvim',
   },
