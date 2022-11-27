@@ -1,8 +1,8 @@
 local plugin = {
-    'glepnir/lspsaga.nvim',
-    cmd = 'Lspsaga',
-    module = 'lspsaga.diagnostic',
-    branch = 'main',
+  'glepnir/lspsaga.nvim',
+  cmd = 'Lspsaga',
+  module = 'lspsaga.diagnostic',
+  branch = 'main',
 }
 
 function plugin.config()

@@ -1,22 +1,22 @@
 local plugins = {
   ['wbthomason/packer.nvim'] = {
     cmd = {
-        'PackerSnapshot',
-        'PackerSnapshotRollback',
-        'PackerSnapshotDelete',
-        'PackerInstall',
-        'PackerUpdate',
-        'PackerSync',
-        'PackerClean',
-        'PackerCompile',
-        'PackerStatus',
-        'PackerProfile',
-        'PackerLoad',
+      'PackerSnapshot',
+      'PackerSnapshotRollback',
+      'PackerSnapshotDelete',
+      'PackerInstall',
+      'PackerUpdate',
+      'PackerSync',
+      'PackerClean',
+      'PackerCompile',
+      'PackerStatus',
+      'PackerProfile',
+      'PackerLoad',
     },
     config = function() require 'plugins' end,
   },
 
-  ["lewis6991/impatient.nvim"] = {},
+  ['lewis6991/impatient.nvim'] = {},
 }
 
 local status_ok, packer = pcall(require, 'packer')
@@ -36,7 +36,7 @@ if status_ok then
       use(require 'module.lsp')
     end,
     config = {
-      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
+      compile_path = vim.fn.stdpath 'data' .. '/packer_compiled.lua',
       display = {
         open_fn = function() return require 'packer.util'.float { border = 'rounded' } end,
       },

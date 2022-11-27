@@ -8,12 +8,12 @@ if not packer_avail then
   vim.fn.delete(packer_path, 'rf')
   -- clone packer
   vim.fn.system {
-      'git',
-      'clone',
-      '--depth',
-      '1',
-      'https://github.com/wbthomason/packer.nvim',
-      packer_path,
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    packer_path,
   }
   -- add packer and try loading it
   vim.cmd.packadd 'packer.nvim'
@@ -26,7 +26,7 @@ end
 if packer_avail then
   -- try to load the packer compiled file
   local run_me, _ = loadfile(
-      vim.fn.stdpath "data" .. "/packer_compiled.lua"
+      vim.fn.stdpath 'data' .. '/packer_compiled.lua'
   )
   if run_me then
     -- if the file loads, run the compiled function
@@ -35,12 +35,12 @@ if packer_avail then
     -- if there is no compiled file, ask user to sync packer
     require 'plugins'
     vim.api.nvim_create_autocmd('User', {
-        once = true,
-        pattern = 'PackerComplete',
-        callback = function()
-          vim.cmd.bw()
-          vim.tbl_map(require, { 'nvim-treesitter' })
-        end,
+      once = true,
+      pattern = 'PackerComplete',
+      callback = function()
+        vim.cmd.bw()
+        vim.tbl_map(require, { 'nvim-treesitter' })
+      end,
     })
     vim.opt.cmdheight = 1
     vim.notify 'Please wait while plugins are installed...'

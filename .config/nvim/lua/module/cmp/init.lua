@@ -3,6 +3,7 @@ table.insert(module, require 'module.cmp.pairs')
 table.insert(module, require 'module.cmp.luasnip')
 table.insert(module, require 'module.cmp.comment')
 
+table.insert(module, { 'onsails/lspkind.nvim', module = 'lspkind' })
 local plugin = {
   'hrsh7th/nvim-cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
@@ -16,7 +17,6 @@ local plugin = {
 
     'saadparwaiz1/cmp_luasnip',
 
-    'onsails/lspkind.nvim',
   },
 }
 

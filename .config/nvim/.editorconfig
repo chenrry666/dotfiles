@@ -28,10 +28,10 @@ insert_final_newline = true
 
 # function call expression's args will align to first arg
 # optional true/false/only_after_more_indention_statement/only_not_exist_cross_row_expression
-align_call_args = only_after_more_indention_statement
+align_call_args = only_not_exist_cross_row_expression
 
 # if true, all function define params will align to first param
-align_function_define_params = true
+align_function_define_params = false
 
 remove_expression_list_finish_comma = true
 
@@ -47,13 +47,13 @@ table_separator_style = comma
 trailing_table_separator = smart
 
 # see document for detail
-continuous_assign_table_field_align_to_equal_sign = true
+continuous_assign_table_field_align_to_equal_sign = false
 
 # if true, format like this "local t = { 1, 2, 3 }"
 keep_one_space_between_table_and_bracket = true
 
 # if indent_style is tab, this option is invalid
-align_table_field_to_first_field = true
+align_table_field_to_first_field = false
 
 # [statement]
 
@@ -65,7 +65,7 @@ max_continuous_line_distance = 2
 # see document for detail
 continuous_assign_statement_align_to_equal_sign = true
 
-# if statement will align like switch case 
+# if statement will align like switch case
 if_condition_align_with_each_other = false
 
 # if true, continuation_indent_size for local or assign statement is invalid
@@ -109,8 +109,8 @@ keep_one_space_between_namedef_and_attribute = true
 
 # [row_layout]
 # The following configuration supports four expressions
-# minLine:${n}   
-# keepLine   
+# minLine:${n} 
+# keepLine 
 # keepLine:${n}
 # maxLine:${n}
 
@@ -137,9 +137,9 @@ enable_check_codestyle = true
 
 # [diagnostic.name_style]
 enable_name_style_check = false
-# the following is name style check rule 
+# the following is name style check rule
 # base option off/camel_case/snake_case/upper_snake_case/pascal_case/same(filename/first_param/'<const string>', snake_case/pascal_case/camel_case)
-# all option can use '|' represent or 
+# all option can use '|' represent or
 # for example:
 # snake_case | upper_snake_case
 # same(first_param, snake_case)
