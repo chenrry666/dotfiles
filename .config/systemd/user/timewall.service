@@ -1,0 +1,11 @@
+# To enable this:
+# $> systemctl --user enable --now timewall.service
+[Unit]
+Description=Dynamic wallpapers daemon
+
+[Service]
+Type=simple
+ExecStart=timewall set --daemon
+
+[Install]
+WantedBy=default.target
