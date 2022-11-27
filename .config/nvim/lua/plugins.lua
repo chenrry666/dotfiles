@@ -91,6 +91,27 @@ local plugins = {
     end,
   },
 
+
+  ["kylechui/nvim-surround"] = {
+    event = "InsertEnter",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+
+  ["lukas-reineke/indent-blankline.nvim"] = {
+    event = "UIEnter",
+    config = function()
+
+      require("indent_blankline").setup {
+        -- space_char_blankline = " ",
+        -- show_current_context = true,
+      }
+    end
+  }
 }
 
 local status_ok, packer = pcall(require, 'packer')
