@@ -17,6 +17,71 @@ local plugins = {
   },
 
   ['lewis6991/impatient.nvim'] = {},
+
+  ['rcarriga/nvim-notify'] = {
+    config = function()
+      vim.notify = require 'notify'
+    end,
+  },
+
+  ['stevearc/dressing.nvim'] = {
+    config = function()
+      require 'dressing'.setup {}
+    end,
+  },
+
+  ['nvim-treesitter/nvim-treesitter'] = {
+    module = 'nvim-treesitter',
+    cmd = {
+      'TSBufDisable',
+      'TSBufEnable',
+      'TSBufToggle',
+      'TSDisable',
+      'TSEnable',
+      'TSToggle',
+      'TSInstall',
+      'TSInstallInfo',
+      'TSInstallSync',
+      'TSModuleInfo',
+      'TSUninstall',
+      'TSUpdate',
+      'TSUpdateSync',
+    },
+    run = function()
+      require 'nvim-treesitter.install'.update { with_sync = true } ()
+    end,
+    config = function()
+      require 'module.tree-sitter'
+    end,
+  },
+
+  ['p00f/nvim-ts-rainbow'] = { after = 'nvim-treesitter' },
+
+  ['glepnir/galaxyline.nvim'] = {
+    branch = 'main',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require 'module.statusline'
+    end,
+  },
+
+  ['rmehri01/onenord.nvim'] = {
+    config = function()
+      require 'onenord'.setup {
+        disable = {
+          background = true,
+        },
+      }
+    end,
+  },
+
+  ['akinsho/toggleterm.nvim'] = {
+    tag = '*',
+    config = function()
+      require 'toggleterm'.setup()
+    end,
+  },
+
 }
 
 local status_ok, packer = pcall(require, 'packer')
@@ -27,9 +92,6 @@ if status_ok then
         if type(key) == 'string' and not plugin[1] then plugin[1] = key end
         use(plugin)
       end
-      use(require 'module.tree-sitter')
-      use(require 'module.statusline')
-      use(require 'module.theme')
       use(require 'module.dashboard')
       use(require 'module.tree')
       use(require 'module.cmp')
