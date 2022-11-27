@@ -19,12 +19,14 @@ local plugins = {
   ['lewis6991/impatient.nvim'] = {},
 
   ['rcarriga/nvim-notify'] = {
+    event = 'UIEnter',
     config = function()
       vim.notify = require 'notify'
     end,
   },
 
   ['stevearc/dressing.nvim'] = {
+    event = 'UIEnter',
     config = function()
       require 'dressing'.setup {}
     end,
@@ -71,6 +73,11 @@ local plugins = {
         disable = {
           background = true,
         },
+        custom_highlights = {
+          NotifyBackground = {
+            bg = "#333333",
+          },
+        },
       }
     end,
   },
@@ -78,7 +85,9 @@ local plugins = {
   ['akinsho/toggleterm.nvim'] = {
     tag = '*',
     config = function()
-      require 'toggleterm'.setup()
+      require 'toggleterm'.setup {
+        open_mapping = [[<C-\>]]
+      }
     end,
   },
 

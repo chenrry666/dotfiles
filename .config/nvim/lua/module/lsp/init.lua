@@ -7,6 +7,11 @@ local plugin = {
 }
 
 function plugin.config()
+  -- Float terminal
+  vim.keymap.set('n', '<A-d>', '<cmd>Lspsaga open_floaterm<CR>', { noremap = true, silent = true })
+  -- close floaterm
+  vim.keymap.set('t', '<A-d>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { noremap = true, silent = true })
+
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
@@ -22,14 +27,14 @@ function plugin.config()
     -- Rename
     vim.keymap.set('n', '<space>rn', '<cmd>Lspsaga rename<CR>', bufopts)
 
-    --   Peek Definition
-    -- you can edit the definition file in this flaotwindow
-    -- also support open/vsplit/etc operation check definition_action_keys
-    -- support tagstack C-t jump back
-    --   Lsp finder find the symbol definition implement reference
-    -- if there is no implement it will hide
-    -- when you use action in finder like open vsplit then you can
-    -- use <C-t> to jump back
+    -- Peek Definition
+    --   you can edit the definition file in this flaotwindow
+    --   also support open/vsplit/etc operation check definition_action_keys
+    --   support tagstack C-t jump back
+    -- Lsp finder find the symbol definition implement reference
+    --   if there is no implement it will hide
+    --   when you use action in finder like open vsplit then you can
+    --   use <C-t> to jump back
     vim.keymap.set('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
     vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>', bufopts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -60,10 +65,6 @@ function plugin.config()
     -- Hover Doc
     vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', bufopts)
 
-    -- Float terminal
-    vim.keymap.set('n', '<A-d>', '<cmd>Lspsaga open_floaterm<CR>', bufopts)
-    -- close floaterm
-    vim.keymap.set('t', '<A-d>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], bufopts)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

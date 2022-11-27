@@ -33,7 +33,7 @@ o.shiftwidth = 2
 o.softtabstop = 2
 
 o.conceallevel = 2
-o.concealcursor = '' -- if set to nc char will always fold except in insert mode
+o.concealcursor = 'nc' -- if set to nc char will always fold except in insert mode
 
 o.foldenable = true -- enable fold
 o.foldlevel = 99 -- disable fold for opened file
@@ -62,7 +62,7 @@ local disabled_built_ins = {
   'gzip',
   'man',
   'matchit',
-  'matchparen',
+  -- 'matchparen',
   'shada_plugin',
   'tarPlugin',
   'tar',
