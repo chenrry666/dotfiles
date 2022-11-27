@@ -2,6 +2,7 @@ local module = {}
 table.insert(module, require 'module.lsp.saga')
 
 -- TODO split keymaps.lua from cmp and lsp
+-- TODO lazyloading
 local plugin = {
   'neovim/nvim-lspconfig',
 }

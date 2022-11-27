@@ -32,6 +32,13 @@ local plugins = {
     end,
   },
 
+  ['j-hui/fidget.nvim'] = {
+    event = 'UIEnter',
+    config = function()
+      require 'fidget'.setup {}
+    end
+  },
+
   ['nvim-treesitter/nvim-treesitter'] = {
     module = 'nvim-treesitter',
     cmd = {
@@ -57,6 +64,12 @@ local plugins = {
     end,
   },
 
+  ['nvim-treesitter/nvim-treesitter-context'] = {
+    event = "UIEnter",
+    config = function()
+      require 'treesitter-context'.setup {}
+    end
+  },
   ['p00f/nvim-ts-rainbow'] = { after = 'nvim-treesitter' },
 
   ['glepnir/galaxyline.nvim'] = {
@@ -71,7 +84,7 @@ local plugins = {
     config = function()
       require 'onenord'.setup {
         disable = {
-          background = true,
+          -- background = true,
         },
         custom_highlights = {
           NotifyBackground = {
@@ -134,7 +147,7 @@ if status_ok then
       },
       profile = {
         enable = true,
-        threshold = 0.0001,
+        -- threshold = 0.0001,
       },
       git = {
         clone_timeout = 300,
