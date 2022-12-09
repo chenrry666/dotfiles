@@ -16,7 +16,9 @@ local plugins = {
     config = function() require 'plugins' end,
   },
 
-  ['lewis6991/impatient.nvim'] = {},
+  ['lewis6991/impatient.nvim'] = {
+    module = 'impatient'
+  },
 
   ['rcarriga/nvim-notify'] = {
     event = 'UIEnter',
