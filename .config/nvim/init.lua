@@ -7,4 +7,5 @@ if ok then impatient.enable_profile() end
 require 'core'
 
 require 'bootstrap'
+require 'keymap'
 require 'plugins'

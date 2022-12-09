@@ -8,16 +8,6 @@ local plugin = {
 }
 
 function plugin.config()
-  -- Float terminal
-  vim.keymap.set('n', '<A-d>', '<cmd>Lspsaga open_floaterm<CR>', { noremap = true, silent = true })
-  -- close floaterm
-  vim.keymap.set('t', '<A-d>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { noremap = true, silent = true })
-
-  -- Mappings.
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-
-  -- Use an on_attach function to only map the following keys
-  -- after the language server attaches to the current buffer
   ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -41,7 +31,7 @@ function plugin.config()
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', 'gk', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
 
     -- Diagnsotics

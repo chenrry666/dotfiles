@@ -24,15 +24,8 @@ require 'nvim-treesitter.configs'.setup {
     extended_mode = false,
     max_file_lines = nil,
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 }
----WORKAROUND: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
-  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-  callback = function()
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-  end,
-})
----ENDWORKAROUND

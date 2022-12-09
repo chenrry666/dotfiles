@@ -28,15 +28,20 @@ local plugins = {
   ['stevearc/dressing.nvim'] = {
     event = 'UIEnter',
     config = function()
-      require 'dressing'.setup {}
+      require 'module.dressing'
     end,
   },
 
   ['j-hui/fidget.nvim'] = {
     event = 'UIEnter',
     config = function()
-      require 'fidget'.setup {}
-    end
+      require 'fidget'.setup {
+        window = {
+          -- make the fidget background transparent
+          blend = 0,
+        },
+      }
+    end,
   },
 
   ['nvim-treesitter/nvim-treesitter'] = {
@@ -65,16 +70,16 @@ local plugins = {
   },
 
   ['nvim-treesitter/nvim-treesitter-context'] = {
-    event = "UIEnter",
+    event = 'UIEnter',
     config = function()
       require 'treesitter-context'.setup {}
-    end
+    end,
   },
   ['p00f/nvim-ts-rainbow'] = { after = 'nvim-treesitter' },
+  ['JoosepAlviste/nvim-ts-context-commentstring'] = { after = 'nvim-treesitter' },
 
   ['glepnir/galaxyline.nvim'] = {
     branch = 'main',
-    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require 'module.statusline'
     end,
@@ -84,11 +89,11 @@ local plugins = {
     config = function()
       require 'onenord'.setup {
         disable = {
-          -- background = true,
+          background = true,
         },
         custom_highlights = {
           NotifyBackground = {
-            bg = "#333333",
+            bg = '#333333',
           },
         },
       }
@@ -98,33 +103,44 @@ local plugins = {
   ['akinsho/toggleterm.nvim'] = {
     tag = '*',
     config = function()
-      require 'toggleterm'.setup {
-        open_mapping = [[<C-\>]]
-      }
+      require 'toggleterm'.setup {}
     end,
   },
 
 
-  ["kylechui/nvim-surround"] = {
-    event = "InsertEnter",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  ['kylechui/nvim-surround'] = {
+    keys = { 'ys', 'ds', 'cs' },
+    tag = '*', -- Use for stability; omit to use `main` branch for the latest features
     config = function()
-      require("nvim-surround").setup({
+      require 'nvim-surround'.setup {
         -- Configuration here, or leave empty to use defaults
-      })
-    end
+      }
+    end,
   },
 
-  ["lukas-reineke/indent-blankline.nvim"] = {
-    event = "UIEnter",
+  ['lukas-reineke/indent-blankline.nvim'] = {
+    event = 'UIEnter',
     config = function()
-
-      require("indent_blankline").setup {
+      require 'indent_blankline'.setup {
         -- space_char_blankline = " ",
         -- show_current_context = true,
       }
-    end
-  }
+    end,
+  },
+
+  ['nvim-tree/nvim-web-devicons'] = {
+    module = 'nvim-web-devicons',
+  },
+
+  ['mrjones2014/smart-splits.nvim'] = {
+    module = 'smart-splits',
+    config = function() require 'module.smart-splits' end,
+  },
+
+  ['max397574/better-escape.nvim'] = {
+    event = 'InsertCharPre',
+    config = function() require 'better_escape'.setup {} end,
+  },
 }
 
 local status_ok, packer = pcall(require, 'packer')
@@ -154,6 +170,7 @@ if status_ok then
         subcommands = {
           update = 'pull --rebase',
         },
+        default_url_format = 'https://ghproxy.com/https://github.com/%s',
       },
       auto_clean = true,
       compile_on_sync = true,
