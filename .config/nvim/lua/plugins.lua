@@ -17,7 +17,7 @@ local plugins = {
   },
 
   ['lewis6991/impatient.nvim'] = {
-    module = 'impatient'
+    module = 'impatient',
   },
 
   ['rcarriga/nvim-notify'] = {
@@ -94,9 +94,8 @@ local plugins = {
           background = true,
         },
         custom_highlights = {
-          NotifyBackground = {
-            bg = '#333333',
-          },
+          NotifyBackground = { bg = '#333333' },
+          NormalFloat = { bg = 'NONE' },
         },
       }
     end,
@@ -142,6 +141,26 @@ local plugins = {
   ['max397574/better-escape.nvim'] = {
     event = 'InsertCharPre',
     config = function() require 'better_escape'.setup {} end,
+  },
+
+  ['folke/zen-mode.nvim'] = {
+    config = function()
+      require 'zen-mode'.setup {
+        window = {
+          backdrop = 1,
+        },
+      }
+    end,
+  },
+
+  ['nvim-lua/plenary.nvim'] = {
+    module = 'plenary',
+  },
+
+  ['sindrets/diffview.nvim'] = {
+    config = function()
+      require 'diffview'.setup {}
+    end,
   },
 }
 
