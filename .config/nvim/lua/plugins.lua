@@ -170,7 +170,7 @@ if status_ok then
         subcommands = {
           update = 'pull --rebase',
         },
-        default_url_format = 'https://ghproxy.com/https://github.com/%s',
+        default_url_format = 'https://github.com/%s',
       },
       auto_clean = true,
       compile_on_sync = true,
