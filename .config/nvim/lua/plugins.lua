@@ -35,7 +35,7 @@ local plugins = {
   },
 
   ['j-hui/fidget.nvim'] = {
-    event = 'UIEnter',
+    event = 'LspAttach',
     config = function()
       require 'fidget'.setup {
         window = {

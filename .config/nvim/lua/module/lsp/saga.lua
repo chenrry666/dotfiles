@@ -2,6 +2,7 @@ local plugin = {
   'glepnir/lspsaga.nvim',
   cmd = 'Lspsaga',
   module = { 'lspsaga.diagnostic', 'lspsaga' },
+  event = 'LspAttach',
   branch = 'main',
 }
 
