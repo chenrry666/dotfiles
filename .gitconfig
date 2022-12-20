@@ -1,15 +1,22 @@
 [user]
 	name = arch
 	email = chengruichen3@gmail.com
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+[core]
+	editor = nvim
 [init]
 	defaultBranch = master
 [color]
-	interactive = always
+	ui = true
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+[maintenance]
+	repo = /home/arch
