@@ -129,4 +129,4 @@ zinit light MichaelAquilina/zsh-you-should-use
 alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
 zinit cdreplay -q
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
