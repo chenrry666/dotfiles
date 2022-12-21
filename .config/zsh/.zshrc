@@ -120,13 +120,16 @@ zinit light zsh-users/zsh-completions
 zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
 
-zinit ice lucid wait='0'
-zinit light DarrinTisdale/zsh-aliases-exa
-DISABLE_LS_COLORS=true
+# zinit ice lucid wait='0'
+# zinit light DarrinTisdale/zsh-aliases-exa
+# DISABLE_LS_COLORS=true
 
 zinit light MichaelAquilina/zsh-you-should-use
 #}}}
 alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
+alias l='exa -lah'
+alias ls='exa'
+alias ll='exa -lah'
 zinit cdreplay -q
 
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
