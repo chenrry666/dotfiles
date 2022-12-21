@@ -14,7 +14,7 @@ o.swapfile = false
 o.scrolloff = 5
 o.sidescrolloff = 5
 
-o.signcolumn = "auto:1-2"
+o.signcolumn = "number"
 
 o.maxmempattern = 2000 -- max match pattern
 o.autochdir = true -- auto change directory to current file
