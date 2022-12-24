@@ -1,0 +1,3 @@
+# vim:fileencoding=utf-8:ft=yaml
+backend: wezterm
+load_term_conf: true
