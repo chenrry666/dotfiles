@@ -8,4 +8,3 @@ require 'core'
 
 require 'bootstrap'
 require 'keymap'
-require 'plugins'
