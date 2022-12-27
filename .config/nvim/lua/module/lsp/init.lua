@@ -73,6 +73,8 @@ function plugin.config()
 
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
   require 'module.lsp.lua'.setup { capabilities = capabilities, on_attach = on_attach }
+  require 'module.lsp.clangd'.setup { capabilities = capabilities, on_attach = on_attach }
+  require 'module.lsp.lemminx'.setup { capabilities = capabilities, on_attach = on_attach }
 end
 
 table.insert(module, plugin)
