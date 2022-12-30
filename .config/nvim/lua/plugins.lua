@@ -15,10 +15,7 @@ local plugins = {
     },
     config = function() require 'plugins' end,
   },
-
-  ['lewis6991/impatient.nvim'] = {
-    module = 'impatient',
-  },
+  ['lewis6991/impatient.nvim'] = {},
 
   ['rcarriga/nvim-notify'] = {
     event = 'UIEnter',
@@ -91,11 +88,11 @@ local plugins = {
     config = function()
       require 'onenord'.setup {
         disable = {
-          background = true,
+          -- background = true,
         },
         custom_highlights = {
-          NotifyBackground = { bg = '#333333' },
-          NormalFloat = { bg = 'NONE' },
+          -- NotifyBackground = { bg = '#333333' },
+          -- NormalFloat = { bg = 'NONE' },
         },
       }
     end,
@@ -103,6 +100,13 @@ local plugins = {
 
   ['akinsho/toggleterm.nvim'] = {
     tag = '*',
+    cmd = {
+      'ToggleTerm',
+      'ToggleTermToggleAll',
+      'ToggleTermSetName',
+      'ToggleTermSendVisualLines',
+      'ToggleTermSendVisualSelection',
+    },
     config = function()
       require 'toggleterm'.setup {}
     end,
@@ -160,6 +164,19 @@ local plugins = {
   ['sindrets/diffview.nvim'] = {
     config = function()
       require 'diffview'.setup {}
+    end,
+  },
+
+  ['folke/neodev.nvim'] = {
+    ft = 'lua',
+    module = 'neodev',
+  },
+
+  ['ray-x/lsp_signature.nvim'] = {
+    module = 'lsp_signature',
+    event = { 'LspAttach' },
+    config = function()
+      require 'lsp_signature'.setup()
     end,
   },
 }

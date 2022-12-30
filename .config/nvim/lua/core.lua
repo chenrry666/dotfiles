@@ -14,7 +14,7 @@ o.swapfile = false
 o.scrolloff = 5
 o.sidescrolloff = 5
 
-o.signcolumn = "number"
+o.signcolumn = 'number'
 
 o.maxmempattern = 2000 -- max match pattern
 o.autochdir = true -- auto change directory to current file
@@ -46,8 +46,8 @@ o.foldnestmax = 5 -- max fold nest
 -- Clipboard
 o.clipboard = 'unnamedplus'
 
-o.completeopt = { 'menu', 'menuone', 'noselect' }
-o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+o.completeopt = { 'menu', 'menuone', 'noselect', 'preview' }
+-- o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 
 -- Leader/local leader
 g.mapleader = [[ ]]
@@ -64,7 +64,7 @@ local disabled_built_ins = {
   'gzip',
   'man',
   'matchit',
-  -- 'matchparen',
+  'matchparen',
   'shada_plugin',
   'tarPlugin',
   'tar',

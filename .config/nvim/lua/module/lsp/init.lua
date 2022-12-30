@@ -18,14 +18,6 @@ function plugin.config()
     -- Rename
     vim.keymap.set('n', '<space>rn', '<cmd>Lspsaga rename<CR>', bufopts)
 
-    -- Peek Definition
-    --   you can edit the definition file in this flaotwindow
-    --   also support open/vsplit/etc operation check definition_action_keys
-    --   support tagstack C-t jump back
-    -- Lsp finder find the symbol definition implement reference
-    --   if there is no implement it will hide
-    --   when you use action in finder like open vsplit then you can
-    --   use <C-t> to jump back
     vim.keymap.set('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
     vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>', bufopts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -70,7 +62,7 @@ function plugin.config()
       vim.lsp.buf.format { async = true }
     end, bufopts)
   end
-
+  require('neodev').setup {}
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
   require 'module.lsp.lua'.setup { capabilities = capabilities, on_attach = on_attach }
   require 'module.lsp.clangd'.setup { capabilities = capabilities, on_attach = on_attach }

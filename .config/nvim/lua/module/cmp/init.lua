@@ -78,9 +78,9 @@ function plugin.config()
     { name = 'path' },
   })
 
-  cmp_conf.view = {
-    entries = { name = 'custom', selection_order = 'near_cursor' },
-  }
+  -- cmp_conf.view = {
+  --   entries = { name = 'custom', selection_order = 'near_cursor' },
+  -- }
 
   cmp.setup(cmp_conf)
 
