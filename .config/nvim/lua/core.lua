@@ -51,7 +51,6 @@ o.foldnestmax = 5 -- max fold nest
 o.clipboard = 'unnamedplus'
 
 o.completeopt = { 'menu', 'menuone', 'noselect', 'preview' }
--- o.colorcolumn = '99999' -- FIXED: for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 
 -- Leader/local leader
 g.mapleader = [[ ]]
