@@ -127,7 +127,7 @@ zinit light romkatv/powerlevel10k
 zinit light MichaelAquilina/zsh-you-should-use
 #}}}
 alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
-alias l='exa -lah'
+alias l='exa -lh'
 alias ls='exa'
 alias ll='exa -lah'
 zinit cdreplay -q
