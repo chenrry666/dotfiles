@@ -67,6 +67,7 @@ function plugin.config()
   require 'module.lsp.lua'.setup { capabilities = capabilities, on_attach = on_attach }
   require 'module.lsp.clangd'.setup { capabilities = capabilities, on_attach = on_attach }
   require 'module.lsp.lemminx'.setup { capabilities = capabilities, on_attach = on_attach }
+  require 'module.lsp.nimlsp'.setup { capabilities = capabilities, on_attach = on_attach }
 end
 
 table.insert(module, plugin)
