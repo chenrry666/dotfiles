@@ -20,7 +20,7 @@ local plugins = {
   ['rcarriga/nvim-notify'] = {
     event = 'UIEnter',
     config = function()
-      vim.notify = require 'notify'
+      require 'module.notify'
     end,
   },
 
@@ -86,15 +86,7 @@ local plugins = {
 
   ['rmehri01/onenord.nvim'] = {
     config = function()
-      require 'onenord'.setup {
-        disable = {
-          -- background = true,
-        },
-        custom_highlights = {
-          -- NotifyBackground = { bg = '#333333' },
-          -- NormalFloat = { bg = 'NONE' },
-        },
-      }
+      require 'module.onenord'
     end,
   },
 
@@ -117,9 +109,7 @@ local plugins = {
     keys = { 'ys', 'ds', 'cs' },
     tag = '*', -- Use for stability; omit to use `main` branch for the latest features
     config = function()
-      require 'nvim-surround'.setup {
-        -- Configuration here, or leave empty to use defaults
-      }
+      require 'nvim-surround'.setup {}
     end,
   },
 
@@ -178,6 +168,22 @@ local plugins = {
     config = function()
       require 'lsp_signature'.setup()
     end,
+
+  },
+  ['goolord/alpha-nvim'] = {
+    config = function()
+      require 'module.alpha'
+    end,
+  },
+
+  ['nvim-tree/nvim-tree.lua'] = {
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- for file icons
+    },
+    tag = 'nightly', -- updated every week. (issue #1193)
+    config = function ()
+      require("module.tree")
+    end
   },
 }
 
@@ -189,8 +195,6 @@ if status_ok then
         if type(key) == 'string' and not plugin[1] then plugin[1] = key end
         use(plugin)
       end
-      use(require 'module.dashboard')
-      use(require 'module.tree')
       use(require 'module.cmp')
       use(require 'module.lsp')
     end,
