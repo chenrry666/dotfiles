@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 local o = vim.opt
 local g = vim.g
 
@@ -7,17 +8,20 @@ o.encoding = 'utf-8'
 
 o.number = true
 o.relativenumber = true
+
 o.ignorecase = true
 o.smartcase = true
+
 o.undofile = false
 o.swapfile = false
+
 o.scrolloff = 5
 o.sidescrolloff = 5
 
 o.signcolumn = 'number'
 
 o.maxmempattern = 2000 -- max match pattern
-o.autochdir = true -- auto change directory to current file
+-- o.autochdir = true -- auto change directory to current file
 o.autoread = true
 o.lazyredraw = true -- true will speed up in macro repeat
 o.ttyfast = true -- true maybe as lazyredraw ? TODO
