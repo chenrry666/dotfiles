@@ -1,6 +1,8 @@
 -- try loading packer
-local packer_path = vim.fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
-local packer_avail = vim.fn.empty(vim.fn.glob(packer_path)) == 0
+local packer_path = vim.fn.stdpath 'data' ..
+    '/site/pack/packer/opt/packer.nvim'
+local packer_avail = vim.fn.empty(vim.fn.glob(packer_path))
+    == 0
 -- if packer isn't availble, reinstall it
 if not packer_avail then
   -- set the location to install packer
@@ -20,7 +22,9 @@ if not packer_avail then
   local packer_loaded, _ = pcall(require, 'packer')
   packer_avail = packer_loaded
   -- if packer didn't load, print error
-  if not packer_avail then vim.api.nvim_err_writeln('Failed to load packer at:' .. packer_path) end
+  if not packer_avail then vim.api.nvim_err_writeln('Failed to load packer at:'
+        .. packer_path)
+  end
 end
 -- if packer is available, check if there is a compiled packer file
 if packer_avail then

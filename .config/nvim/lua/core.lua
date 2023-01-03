@@ -3,7 +3,10 @@ local o = vim.opt
 local g = vim.g
 
 vim.scriptencoding = 'utf-8'
-o.fileencodings = { 'utf-8', 'ucs-bom', 'gb18030', 'gbk', 'gb2312', 'cp936', 'latin1' }
+o.fileencodings = {
+  'utf-8', 'ucs-bom', 'gb18030', 'gbk',
+  'gb2312', 'cp936', 'latin1',
+}
 o.encoding = 'utf-8'
 
 o.number = true

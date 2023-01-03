@@ -3,13 +3,18 @@ table.insert(module, require 'module.cmp.pairs')
 table.insert(module, require 'module.cmp.luasnip')
 table.insert(module, require 'module.cmp.comment')
 
-table.insert(module, { 'onsails/lspkind.nvim', module = 'lspkind' })
+table.insert(module,
+             { 'onsails/lspkind.nvim', module = 'lspkind' })
 local plugin = {
   'hrsh7th/nvim-cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
   requires = {
     -- Completion sources
-    { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', module = 'cmp_nvim_lsp' },
+    {
+      'hrsh7th/cmp-nvim-lsp',
+      after = 'nvim-cmp',
+      module = 'cmp_nvim_lsp',
+    },
     { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
@@ -39,7 +44,9 @@ function plugin.config()
 
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
+    return col ~= 0 and
+        vim.api.nvim_buf_get_lines(0, line - 1, line, true)
+        [1]:sub(col, col):match '%s' == nil
   end
   cmp_conf.mapping = cmp.mapping.preset.insert {
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),

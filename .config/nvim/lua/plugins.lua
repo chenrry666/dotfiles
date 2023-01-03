@@ -13,7 +13,9 @@ local plugins = {
       'PackerProfile',
       'PackerLoad',
     },
-    config = function() require 'plugins' end,
+    config = function()
+      require 'plugins'
+    end,
   },
   ['lewis6991/impatient.nvim'] = {},
 
@@ -104,7 +106,6 @@ local plugins = {
     end,
   },
 
-
   ['kylechui/nvim-surround'] = {
     keys = { 'ys', 'ds', 'cs' },
     tag = '*', -- Use for stability; omit to use `main` branch for the latest features
@@ -129,12 +130,16 @@ local plugins = {
 
   ['mrjones2014/smart-splits.nvim'] = {
     module = 'smart-splits',
-    config = function() require 'module.smart-splits' end,
+    config = function()
+      require 'module.smart-splits'
+    end,
   },
 
   ['max397574/better-escape.nvim'] = {
     event = 'InsertCharPre',
-    config = function() require 'better_escape'.setup {} end,
+    config = function()
+      require 'better_escape'.setup {}
+    end,
   },
 
   ['folke/zen-mode.nvim'] = {
@@ -168,7 +173,6 @@ local plugins = {
     config = function()
       require 'lsp_signature'.setup()
     end,
-
   },
   ['goolord/alpha-nvim'] = {
     config = function()
@@ -181,9 +185,9 @@ local plugins = {
       'nvim-tree/nvim-web-devicons', -- for file icons
     },
     tag = 'nightly', -- updated every week. (issue #1193)
-    config = function ()
-      require("module.tree")
-    end
+    config = function()
+      require 'module.tree'
+    end,
   },
 }
 
@@ -192,16 +196,21 @@ if status_ok then
   packer.startup {
     function(use)
       for key, plugin in pairs(plugins) do
-        if type(key) == 'string' and not plugin[1] then plugin[1] = key end
+        if type(key) == 'string' and not plugin[1] then
+          plugin[1] = key
+        end
         use(plugin)
       end
       use(require 'module.cmp')
       use(require 'module.lsp')
     end,
     config = {
-      compile_path = vim.fn.stdpath 'data' .. '/packer_compiled.lua',
+      compile_path = vim.fn.stdpath 'data' ..
+          '/packer_compiled.lua',
       display = {
-        open_fn = function() return require 'packer.util'.float { border = 'rounded' } end,
+        open_fn = function()
+          return require 'packer.util'.float { border = 'rounded' }
+        end,
       },
       profile = {
         enable = true,

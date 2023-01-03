@@ -54,7 +54,8 @@ gls.left[2] = {
     separator = ' ',
     separator_highlight = { colors.magenta, colors.darkblue },
     condition = buffer_not_empty,
-    highlight = { require 'galaxyline.provider_fileinfo'.get_file_icon_color, colors.darkblue },
+    highlight = { require 'galaxyline.provider_fileinfo'.get_file_icon_color,
+      colors.darkblue },
   },
 }
 gls.left[3] = {
