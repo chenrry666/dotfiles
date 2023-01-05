@@ -7,7 +7,7 @@ return {
     'Noto Sans CJK',
   },
   text_background_opacity = 1,
-  window_background_opacity = 0.8,
+  window_background_opacity = 0.9,
   color_scheme = 'Ollie',
   hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = false,
