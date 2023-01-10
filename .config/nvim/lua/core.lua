@@ -34,6 +34,8 @@ o.mouse = 'a'
 o.hidden = true
 o.termguicolors = true
 
+-- useful when editing my neovim config :P
+o.path:prepend './lua/**'
 o.path:append './**'
 
 o.tabstop = 2 -- replace tab as white space

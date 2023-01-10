@@ -15,12 +15,13 @@ local comment = {
           location = require 'ts_context_commentstring.utils'
               .get_visual_start_location()
         end
-
-        return require 'ts_context_commentstring.internal'.calculate_commentstring {
+        local str = require 'ts_context_commentstring.internal'.calculate_commentstring {
           key = ctx.ctype == utils.ctype.linewise and
               '__default' or '__multiline',
           location = location,
         }
+        ---@diagnostic disable-next-line: return-type-mismatch
+        return str
       end,
     }
   end,
