@@ -1,4 +1,5 @@
 ---@diagnostic disable: assign-type-mismatch
+-- to ignore assigning a value to vim.opt
 local o = vim.opt
 local g = vim.g
 

@@ -1,3 +1,6 @@
+-- TODO: maybe we can use more tables like editing_plugins,
+--    lsp_plugins, complete_plugins ,etc.? That will be much
+--    better than all the plugin in only ONE table
 local plugins = {
   ['wbthomason/packer.nvim'] = {
     cmd = {
