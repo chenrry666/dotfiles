@@ -13,22 +13,19 @@ function plugin.config()
   end
   require 'neodev'.setup {}
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
-  require 'module.lsp.lua'.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+  local configs = {
+    'clangd',
+    'sumneko_lua',
+    'vscode-json-language-server',
+    -- 'nimlsp',
+    -- 'lemminx',
   }
-  require 'module.lsp.clangd'.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
-  require 'module.lsp.lemminx'.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
-  require 'module.lsp.nimlsp'.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
+  for _, config in ipairs(configs) do
+    require('module.lsp.' .. config).setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+  end
 end
 
 table.insert(module, plugin)
