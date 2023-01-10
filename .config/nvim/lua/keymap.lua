@@ -146,6 +146,11 @@ if is_available 'toggleterm.nvim' then
   map.n['<C-`>'] = map.n['<F7>']
   map.t['<C-`>'] = map.n['<F7>']
 end
+
+-- write files with sudo permission
+-- this is useful when you forget to use `sudo nvim foo`
+map.n["<leader>S"] = {"<cmd>w !sudo tee %<CR>", desc="write current file with sudo permission"}
+
 -- }}}
 
 -- {{{
