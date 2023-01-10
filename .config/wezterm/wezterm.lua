@@ -1,3 +1,4 @@
+-- vim: fdm=marker
 local wezterm = require 'wezterm'
 return {
   font = wezterm.font_with_fallback {
@@ -10,7 +11,9 @@ return {
   window_background_opacity = 0.9,
   color_scheme = 'Ollie',
   hide_tab_bar_if_only_one_tab = true,
-  use_fancy_tab_bar = false,
+  use_fancy_tab_bar = true,
+  window_close_confirmation = 'NeverPrompt',
+  -- hyperlink {{{
   hyperlink_rules = {
     -- Linkify things that look like URLs and the host has a TLD name.
     {
@@ -45,4 +48,5 @@ return {
     --   format = 'https://www.github.com/$1/$3',
     -- },
   },
+  -- }}}
 }
