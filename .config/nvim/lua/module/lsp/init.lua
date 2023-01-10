@@ -7,9 +7,8 @@ local plugin = {
 }
 
 function plugin.config()
-  ---@diagnostic disable-next-line: unused-local
   local on_attach = function(client, bufnr)
-    require 'keymap'.attach_lsp(bufnr)
+    require 'keymap'.attach_lsp(client, bufnr)
   end
   require 'neodev'.setup {}
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()

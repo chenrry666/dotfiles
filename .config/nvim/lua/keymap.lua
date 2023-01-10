@@ -21,13 +21,13 @@ local function setup_mapping(map_table, base)
     end
   end
 end
--- }}}
-
 
 local function is_available(plugin)
   return packer_plugins ~= nil and
       packer_plugins[plugin] ~= nil
 end
+
+-- }}}
 
 local map = { i = {}, n = {}, v = {}, t = {}, [''] = {} }
 -- {{{
@@ -149,14 +149,14 @@ end
 
 -- write files with sudo permission
 -- this is useful when you forget to use `sudo nvim foo`
-map.n["<leader>S"] = {"<cmd>w !sudo tee %<CR>", desc="write current file with sudo permission"}
+map.n['<leader>S'] = { '<cmd>w !sudo tee %<CR>',
+  desc = 'write current file with sudo permission' }
 
 -- }}}
 
--- {{{
-
 -- lsp map
 local lmap = { i = {}, n = {}, v = {}, t = {}, [''] = {} }
+-- {{{
 
 -- Code action
 lmap.n['<leader>ca'] = {
@@ -228,7 +228,8 @@ function M.setup()
   setup_mapping(map)
 end
 
-function M.attach_lsp(bufnr)
+---@diagnostic disable-next-line: unused-local
+function M.attach_lsp(client, bufnr)
   local bufopts = { noremap = true, silent = true,
     buffer = bufnr, }
   setup_mapping(lmap, bufopts)
