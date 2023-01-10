@@ -1,3 +1,4 @@
+# vim: fdm=marker
 # p10k {{{
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -28,43 +29,43 @@ setopt histignorespace
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path .zcache
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
- 
+
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' menu select
 zstyle ':completion:*:*:default' force-list always
 zstyle ':completion:*' select-prompt '%SSelect:  lines: %L  matches: %M  [%p]'
- 
+
 zstyle ':completion:*:match:*' original only
 zstyle ':completion::prefix-1:*' completer _complete
 zstyle ':completion:predict:*' completer _complete
 zstyle ':completion:incremental:*' completer _complete _correct
 zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
- 
+
 zstyle ':completion:*' expand 'yes'
 zstyle ':completion:*' squeeze-shlashes 'yes'
 zstyle ':completion::complete:*' '\'
- 
+
 #colorred completion menus
 eval $(dircolors -b)
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
- 
+
 #ignorecase
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 #correction
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
- 
+
 #kill 命令补全
 #compdef pkill=kill
 #compdef pkill=killall
 #zstyle ':completion:*:*:kill:*' menu yes select
 #zstyle ':completion:*:*:*:*:processes' force-list always
 #zstyle ':completion:*:processes' command 'ps -au$USER'
- 
+
 #grouping
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*' group-name ''
@@ -90,16 +91,16 @@ zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 # }}}
 
-zstyle :compinstall filename '/home/arch/.zshrc'
+zstyle :compinstall filename '/home/arch/.config/zsh/.zshrc'
 autoload -Uz compinit
 compinit
 # zinit {{{
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+  print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+  command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+  command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+    print -P "%F{33} %F{34}Installation successful.%f%b" || \
+    print -P "%F{160} The clone has failed.%f%b"
 fi
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
@@ -126,10 +127,12 @@ zinit light romkatv/powerlevel10k
 
 zinit light MichaelAquilina/zsh-you-should-use
 #}}}
-alias dot="git --git-dir=${HOME}/.dot --work-tree=${HOME}/"
-alias l='exa -lh'
-alias ls='exa'
-alias ll='exa -lah'
+alias l='exa -lh -stype'
+alias ls='exa -stype'
+alias ll='exa -lah -stype'
+alias -g NO='2&1>/dev/null &'
+alias mnt='rclone mount one:/ /home/arch/one/ --vfs-cache-mode full &disown'
 zinit cdreplay -q
+
 
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
