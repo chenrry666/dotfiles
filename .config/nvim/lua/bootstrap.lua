@@ -3,7 +3,7 @@ local packer_path = vim.fn.stdpath 'data' ..
     '/site/pack/packer/opt/packer.nvim'
 local packer_avail = vim.fn.empty(vim.fn.glob(packer_path))
     == 0
--- if packer isn't availble, reinstall it
+-- if packer isn't available, reinstall it
 if not packer_avail then
   -- set the location to install packer
   -- delete the old packer install if one exists
